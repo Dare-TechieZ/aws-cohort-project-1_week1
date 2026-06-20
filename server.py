@@ -6,7 +6,7 @@ import boto3
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-# S3 Client configured for Supabase Storage
+
 s3_client = boto3.client(
     service_name='s3',
     endpoint_url='https://offzumvtexidpucddytq.storage.supabase.co/storage/v1/s3',
@@ -17,7 +17,7 @@ s3_client = boto3.client(
 
 BUCKET_NAME = "my-live-bucket"
 
-# 1. FETCH ALL FILES ROUTE
+
 @app.route('/api/files', methods=['GET'])
 def get_files():
     try:
@@ -27,7 +27,7 @@ def get_files():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# 2. UPLOAD FILE ROUTE
+
 @app.route('/api/upload', methods=['POST'])
 def upload_file():
     try:
@@ -38,7 +38,7 @@ def upload_file():
         if file.filename == '':
             return jsonify({"error": "Empty filename passed"}), 400
 
-        # Upload binary stream directly to Supabase Bucket
+  
         s3_client.upload_fileobj(
             file,
             BUCKET_NAME,
@@ -48,7 +48,7 @@ def upload_file():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# 3. DELETE FILE ROUTE
+
 @app.route('/api/delete/<filename>', methods=['DELETE'])
 def delete_file(filename):
     try:
@@ -58,6 +58,6 @@ def delete_file(filename):
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    # Render will assign a port dynamically via environment variables. Default to 5000 locally.
+   
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
