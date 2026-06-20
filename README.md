@@ -65,3 +65,38 @@ pip install -r requirements.txt
 
 # Start the Flask development server locally
 python server.py
+
+```
+## Project Workflow
+
+1️⃣ User opens the Cloud Storage Dashboard through the deployed frontend.
+
+2️⃣ The frontend (HTML, CSS, JavaScript) sends API requests to the Flask backend whenever a user uploads, views, or deletes a file.
+
+3️⃣ The Flask backend receives the request and processes it using AWS SDK for Python (Boto3).
+
+4️⃣ For file uploads:
+   - User selects a file.
+   - Frontend sends the file to the backend.
+   - Backend uses upload_fileobj() to upload the file to cloud object storage.
+
+5️⃣ For viewing files:
+   - Frontend requests the latest file list.
+   - Backend uses list_objects_v2() to fetch available files from storage.
+   - File metadata is returned and displayed on the dashboard.
+
+6️⃣ For deleting files:
+   - User clicks the delete button.
+   - Frontend sends the file identifier to the backend.
+   - Backend uses delete_object() to remove the file from storage.
+
+7️⃣ Every operation is reflected instantly on the dashboard through API responses, ensuring real-time synchronization between users and cloud storage.
+
+8️⃣ Deployment Architecture:
+   - Frontend hosted on Vercel
+   - Backend hosted on Render
+   - Cloud storage managed through AWS SDK (Boto3)
+
+📂 User → Frontend (Vercel) → Flask Backend (Render) → AWS SDK (Boto3) → Cloud Object Storage
+
+This workflow creates a complete cloud-based file management system where users can upload, view, and delete files through a simple web interface while the backend securely manages all cloud storage operations.
