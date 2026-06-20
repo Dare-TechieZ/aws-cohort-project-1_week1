@@ -1,7 +1,7 @@
-// Replace this with your dynamic live Render URL once your backend is compiled
+
 const BACKEND_URL = "https://ria-vault-backend.onrender.com";
 
-// Refresh and fetch function
+
 document.getElementById('fetch-btn').addEventListener('click', async () => {
     const fileListElement = document.getElementById('file-list');
     fileListElement.innerHTML = '<li>Polling objects from Supabase Storage...</li>';
@@ -94,7 +94,7 @@ document.getElementById('upload-btn').addEventListener('click', async () => {
     }
 });
 
-// Delete function executing API call
+
 async function deleteFileFromServer(filename) {
     try {
         const response = await fetch(`${BACKEND_URL}/api/delete/${filename}`, {
@@ -104,7 +104,7 @@ async function deleteFileFromServer(filename) {
         const data = await response.json();
         if (response.ok) {
             alert(data.message);
-            // Re-trigger the fetch button automatically to clear the item from view
+            
             document.getElementById('fetch-btn').click(); 
         } else {
             alert("Error deleting file: " + data.error);
