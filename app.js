@@ -1,5 +1,5 @@
 // Replace this with your dynamic live Render URL once your backend is compiled
-const BACKEND_URL = "http://127.0.0.1:5000";
+const BACKEND_URL = "https://ria-vault-backend.onrender.com";
 
 // Refresh and fetch function
 document.getElementById('fetch-btn').addEventListener('click', async () => {
