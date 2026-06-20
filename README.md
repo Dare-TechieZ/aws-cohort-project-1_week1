@@ -1,17 +1,22 @@
-# aws-cohort-project-1_week1
-<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/c3cf73f2-1fb5-4450-aa43-78ca94c49b73" />
 
 # ☁️ RIA Vault: Production Cloud Document Dashboard
+
 
 RIA Vault is a cloud-native document management system featuring a modern, responsive frontend dashboard integrated with a Python Flask API Gateway. The core architecture uses the official **AWS Boto3 SDK client** to manage asynchronous object streaming, indexing, and lifecycle management within cloud-deployed storage.
 
 ---
 
+## 📱 Dashboard Interface
+
+<p align="center">
+  <img width="2854" height="1606" alt="image" src="https://github.com/user-attachments/assets/0b6e151b-dfd2-4241-855f-1d818ca3ab21" />
+</p>
+
 ## 🏗️ Architecture & Workflow
 
 The platform separates client-side presentation, routing configurations, application gateway logic, and cloud storage protocols using the AWS S3 API ecosystem.
 
-![RIA Vault Workflow](https://lh3.googleusercontent.com/d/1X6tTqG_e0_L1Yqshf-C3mR0f-61xK_lM)
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/c3cf73f2-1fb5-4450-aa43-78ca94c49b73" />
 
 ### System Interactions:
 1. **User Interface (Browser):** The user triggers actions via the `index.html` layout (Upload, Sync, or Delete).
