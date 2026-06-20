@@ -18,18 +18,17 @@ document.getElementById('fetch-btn').addEventListener('click', async () => {
             data.files.forEach(fileName => {
                 const li = document.createElement('li');
                 
-                // Style the row nicely so the text and button split across the screen
+           
                 li.style.display = "flex";
                 li.style.justifyContent = "space-between";
                 li.style.alignItems = "center";
                 li.style.marginBottom = "8px";
 
-                // 1. Text node for file name
+    
                 const textSpan = document.createElement('span');
                 textSpan.textContent = `📄 ${fileName}`;
                 li.appendChild(textSpan);
 
-                // 2. Create the custom delete button element
                 const deleteBtn = document.createElement('button');
                 deleteBtn.textContent = "🗑️ Delete";
                 deleteBtn.style.backgroundColor = "#ff4d4d";
@@ -39,7 +38,6 @@ document.getElementById('fetch-btn').addEventListener('click', async () => {
                 deleteBtn.style.borderRadius = "4px";
                 deleteBtn.style.padding = "4px 8px";
 
-                // 3. Attach the click event
                 deleteBtn.onclick = async () => {
                     if (confirm(`Are you sure you want to permanently delete ${fileName}?`)) {
                         await deleteFileFromServer(fileName);
@@ -55,7 +53,7 @@ document.getElementById('fetch-btn').addEventListener('click', async () => {
     }
 });
 
-// Upload function
+
 document.getElementById('upload-btn').addEventListener('click', async () => {
     const fileInput = document.getElementById('file-input');
     const statusText = document.getElementById('upload-status');
@@ -82,7 +80,7 @@ document.getElementById('upload-btn').addEventListener('click', async () => {
         if (response.ok) {
             statusText.textContent = "✅ File synced directly to cloud storage!";
             statusText.style.color = "green";
-            document.getElementById('fetch-btn').click(); // Auto-reload list view
+            document.getElementById('fetch-btn').click();
         } else {
             const errData = await response.json();
             statusText.textContent = `❌ Rejection: ${errData.error}`;
